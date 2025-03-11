@@ -60,8 +60,9 @@
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Harga Beli</label>
                         <div class="col-11">
-                            <input type="number" class="form-control" id="harga_beli" name="harga_beli"
-                                value="{{ old('harga_beli', number_format($barang->harga_beli, 0, ',', '.')) }}" required>
+                            <input type="text" class="form-control" id="harga_beli_display"
+                                value="{{ number_format($barang->harga_beli, 0, ',', '.') }}">
+                            <input type="hidden" name="harga_beli" id="harga_beli_hidden" value="{{ $barang->harga_beli }}">
                             @error('harga_beli')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
@@ -71,8 +72,9 @@
                     <div class="form-group row">
                         <label class="col-1 control-label col-form-label">Harga Jual</label>
                         <div class="col-11">
-                            <input type="number" class="form-control" id="harga_jual" name="harga_jual"
-                                value="{{ old('harga_jual', number_format($barang->harga_jual, 0, ',', '.')) }}" required>
+                            <input type="text" class="form-control" id="harga_jual_display"
+                                value="{{ number_format($barang->harga_jual, 0, ',', '.') }}">
+                            <input type="hidden" name="harga_jual" id="harga_jual_hidden" value="{{ $barang->harga_jual }}">
                             @error('harga_jual')
                                 <small class="form-text text-danger">{{ $message }}</small>
                             @enderror
@@ -95,4 +97,26 @@
 @endpush
 
 @push('js')
+    <script>
+        $(document).ready(function() {
+            $('#harga_beli_display, #harga_jual_display').on('input', function() {
+                let value = $(this).val().replace(/\D/g, '');
+
+                let hiddenId = $(this).attr('id').replace('_display', '_hidden');
+                $('#' + hiddenId).val(value);
+
+                if (value !== '') {
+                    $(this).val(formatRupiah(value));
+                }
+            });
+
+            function formatRupiah(angka) {
+                return new Intl.NumberFormat('id-ID').format(angka);
+            }
+
+            $('form').on('submit', function() {
+                return true;
+            });
+        });
+    </script>
 @endpush

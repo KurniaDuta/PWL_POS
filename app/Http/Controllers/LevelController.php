@@ -13,7 +13,7 @@ class LevelController extends Controller
     {
 
         $breadcrumb = (object) [
-            'title' => 'Daftar Level',
+            'title' => 'Daftar Level User',
             'list' => ['Home', 'Level']
         ];
 
@@ -83,7 +83,7 @@ class LevelController extends Controller
             'level_nama'  => $request->level_nama,
         ]);
 
-        return redirect('/level')->with('success', 'Data user berhasil disimpan');
+        return redirect('/level')->with('success', 'Data level berhasil disimpan');
     }
 
     public function show(string $id)
@@ -119,7 +119,7 @@ class LevelController extends Controller
 
         $activeMenu = 'level';
 
-        return view('level.edit', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'level' => $level, 'activeMenu' => $activeMenu]);
+        return view('level.edit', ['breadcrumb' => $breadcrumb, 'page' => $page, 'level' => $level, 'activeMenu' => $activeMenu]);
     }
 
     public function update(Request $request, string $id)
@@ -134,22 +134,22 @@ class LevelController extends Controller
             'level_nama'  => $request->level_nama
         ]);
 
-        return redirect('/level')->with('success', 'Data user berhasil diubah');
+        return redirect('/level')->with('success', 'Data level berhasil diubah');
     }
 
     public function destroy(string $id)
     {
         $check = LevelModel::find($id);
         if (!$check) {
-            return redirect('/level')->with('error', 'Data user tidak ditemukan');
+            return redirect('/level')->with('error', 'Data level tidak ditemukan');
         }
 
         try {
             LevelModel::destroy($id);
 
-            return redirect('/level')->with('success', 'Data user berhasil dihapus');
+            return redirect('/level')->with('success', 'Data level berhasil dihapus');
         } catch (\Illuminate\Database\QueryException $e) {
-            return redirect('/level')->with('error', 'Data user 
+            return redirect('/level')->with('error', 'Data level 
                 gagal dihapus karena masih terdapat tabel lain yang terkait dengan data ini');
         }
     }
