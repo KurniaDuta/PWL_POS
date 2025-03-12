@@ -29,10 +29,6 @@ class SupplierController extends Controller
     {
         $supplier = SupplierModel::select('supplier_id', 'supplier_kode', 'supplier_nama', 'supplier_alamat');
 
-        if ($request->supplier_id) {
-            $supplier = $supplier->where('supplier_id', $request->supplier_id);
-        }
-
         return DataTables::of($supplier)
             ->addIndexColumn()
 
@@ -70,8 +66,9 @@ class SupplierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'supplier_kode'  => 'required|string|max:3',
-            'supplier_nama'  => 'required|string'
+            'supplier_kode'  => 'required|string|max:3|unique:m_supplier,supplier_kode',
+            'supplier_nama'  => 'required|string',
+            'supplier_alamat'  => 'required|string'
         ]);
 
         SupplierModel::create([
@@ -122,7 +119,7 @@ class SupplierController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'supplier_kode'  => 'required|string|max:3',
+            'supplier_kode'  => 'required|string|max:3|unique:m_supplier,supplier_kode,'.$id.',supplier_id',
             'supplier_nama'  => 'required|string',
             'supplier_alamat'  => 'required|string'
         ]);

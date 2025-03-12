@@ -29,10 +29,6 @@ class KategoriController extends Controller
     {
         $kategori = KategoriModel::select('kategori_id', 'kategori_kode', 'kategori_nama');
 
-        if ($request->kategori_id) {
-            $kategori = $kategori->where('kategori_id', $request->kategori_id);
-        }
-
         return DataTables::of($kategori)
             ->addIndexColumn()
 
@@ -70,7 +66,7 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kategori_kode'  => 'required|string|max:3',
+            'kategori_kode'  => 'required|string|max:3|unique:m_kategori,kategori_kode',
             'kategori_nama'  => 'required|string'
         ]);
 
@@ -122,7 +118,7 @@ class KategoriController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'kategori_kode'  => 'required|string|max:3',
+            'kategori_kode'  => 'required|string|max:3|unique:m_kategori,kategori_kode,'.$id.',kategori_id',
             'kategori_nama'  => 'required|string'
         ]);
 

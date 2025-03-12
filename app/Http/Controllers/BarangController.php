@@ -128,7 +128,7 @@ class BarangController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'barang_kode'   => 'required|string|min:3|',
+            'barang_kode'   => 'required|string|min:3|unique:m_barang,barang_kode,'.$id.',barang_id',
             'barang_nama'   => 'required|string|max:100',
             'harga_beli'    => 'required|integer',
             'harga_jual'    => 'required|integer',
