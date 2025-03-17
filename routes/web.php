@@ -25,6 +25,7 @@ Route::prefix('user')->group(function () {
     Route::delete('/{id}', [UserController::class, 'destroy']);
     Route::get('/{id}/delete_ajax', [UserController::class, 'confirm_ajax']);
     Route::delete('/{id}/delete_ajax', [UserController::class, 'delete_ajax']);
+    Route::get('/{id}/show_ajax', [UserController::class, 'show_ajax']);
 });
 
 
