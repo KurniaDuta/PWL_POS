@@ -53,10 +53,17 @@ Route::prefix('kategori')->group(function () {
     Route::post('/list', [KategoriController::class, 'list']);
     Route::get('/create', [KategoriController::class, 'create']);
     Route::post('/', [KategoriController::class, 'store']);
+    Route::get('/create_ajax', [KategoriController::class, 'create_ajax']);
+    Route::post('/ajax', [KategoriController::class, 'store_ajax']);
     Route::get('/{id}', [KategoriController::class, 'show']);
     Route::get('/{id}/edit', [KategoriController::class, 'edit']);
     Route::put('/{id}', [KategoriController::class, 'update']);
+    Route::get('/{id}/edit_ajax', [KategoriController::class, 'edit_ajax']);
+    Route::put('/{id}/update_ajax', [KategoriController::class, 'update_ajax']); 
     Route::delete('/{id}', [KategoriController::class, 'destroy']);
+    Route::get('/{id}/delete_ajax', [KategoriController::class, 'confirm_ajax']);
+    Route::delete('/{id}/delete_ajax', [KategoriController::class, 'delete_ajax']);
+    Route::get('/{id}/show_ajax', [KategoriController::class, 'show_ajax']);
 });
 
 Route::prefix('supplier')->group(function () {
