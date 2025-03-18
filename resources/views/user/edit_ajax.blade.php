@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input value="{{ $user->password }}" type="password" name="password" id="password"
+                        <input value="" type="password" name="password" id="password"
                             class="form-control">
                         <small class="form-text text-muted">Abaikan jika tidak ingin ubah password</small>
                         <small id="error-password" class="error-text form-text text-danger"></small>
