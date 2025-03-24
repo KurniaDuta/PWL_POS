@@ -30,13 +30,13 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Level Kode</label>
+                        <label>Kategori Kode</label>
                         <input value="{{ $kategori->kategori_kode }}" type="text" name="kategori_kode" id="kategori_kode"
                             class="form-control" required>
                         <small id="error-kategori_kode" class="error-text form-text text-danger"></small>
                     </div>
                     <div class="form-group">
-                        <label>Level Nama</label>
+                        <label>Kategori Nama</label>
                         <input value="{{ $kategori->kategori_nama }}" type="text" name="kategori_nama" id="kategori_nama"
                             class="form-control" required>
                         <small id="error-kategori_nama" class="error-text form-text text-danger"></small>
