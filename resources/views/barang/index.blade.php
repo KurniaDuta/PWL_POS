@@ -5,8 +5,9 @@
         <div class="card-header">
             <h3>{{ $page->title }}</h3>
             <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{ url('barang/create') }}">Tambah</a>
-                <button onclick="modalAction('{{ url('barang/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah
+                <button onclick="modalAction('{{ url('/barang/import') }}')" class="btn btn-info">Import Barang</button>
+                <a class="btn btn-primary" href="{{ url('barang/create') }}">Tambah</a>
+                <button onclick="modalAction('{{ url('barang/create_ajax') }}')" class="btn btn-success">Tambah
                     Ajax</button>
             </div>
         </div>
@@ -37,8 +38,8 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Barang Kode</th>
-                        <th>Barang Nama</th>
+                        <th>Kode Barang</th>
+                        <th>Nama Barang </th>
                         <th>Harga Beli</th>
                         <th>Harga Jual</th>
                         <th>Kategori</th>
