@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/', [WelcomeController::class, 'index']);
+    Route::post('/welcome/update-photo', [WelcomeController::class, 'updateProfilePhoto']);
 
     Route::prefix('user')->group(function () {
         Route::middleware(['authorize:ADM'])->group(function () {
