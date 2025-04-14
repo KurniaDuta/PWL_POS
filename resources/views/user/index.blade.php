@@ -5,8 +5,11 @@
         <div class="card-header">
             <h3>{{$page -> title}}</h3>
             <div class="card-tools">
-                <a class="btn btn-sm btn-primary mt-1" href="{{url('user/create')}}">Tambah</a>
-                <button onclick="modalAction('{{ url('user/create_ajax') }}')" class="btn btn-sm btn-success mt-1">Tambah Ajax</button>
+                <button onclick="modalAction('{{ url('/user/import') }}')" class="btn btn-info">Import Barang</button>
+                <a class="btn btn-primary" href="{{ url('user/export_excel') }}"><i class="fa fa-file-excel"></i> Export Barang</a>
+                <button onclick="modalAction('{{ url('user/create_ajax') }}')" class="btn btn-success">Tambah
+                    Ajax</button>
+                <a href="{{ url('user/export_pdf') }}" class="btn btn-warning"><i class="fa fa-file-pdf"></i> Export Barang</a>
             </div>
         </div>
         <div class="card-body">
