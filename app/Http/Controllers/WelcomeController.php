@@ -29,7 +29,7 @@ class WelcomeController extends Controller
     public function updateProfilePhoto(Request $request)
     {
         $request->validate([
-            'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:4048',
         ]);
 
         if (!$request->hasFile('profile_photo')) {
